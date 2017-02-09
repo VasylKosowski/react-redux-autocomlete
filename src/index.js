@@ -4,19 +4,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {Provider} from 'react-redux';
 import store from './state';
-import {API_URL, ACCESS_TOKEN, QUERY_CHANGED} from './const'
-import fetch from 'isomorphic-fetch';
+import {getGitHubUsers} from './api/gitHubUsersApi'
+import {INCREASE_COUNTER} from './const';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}>
+    <App />
+</Provider>, document.getElementById('root') );
 
-store.subscribe(() => console.log('Some1', store.getState().query.query));
+store.subscribe(() => console.log('Some1', store.getState()));
 
-/* some tests */
 store.dispatch({
-    type : QUERY_CHANGED,
-    query : 'Vasyl',
+    type : 'PROMISE',
+    actions: ['USERS_LOADING', 'USERS_LOADED', 'USERS_LOADED_FAILURE'],
+    promise : getGitHubUsers('vasyl')
 });
 
-fetch(`${API_URL}?access_token=${ACCESS_TOKEN}&q=${store.getState().query.query}`).then((r) => r.json())
-    .then(::console.log);
+store.dispatch({
+   type : INCREASE_COUNTER,
+});
+
+store.dispatch({
+    type : INCREASE_COUNTER,
+});
+store.dispatch({
+    type : INCREASE_COUNTER,
+});
