@@ -4,7 +4,7 @@
 export default function query(state = '', action){
     switch (action.type) {
         case 'QUERY_CHANGED':
-            return {...state, ...{query: state.query}};
+            return {...state, ...{query: action.query}};
         default :
             return state
     }
