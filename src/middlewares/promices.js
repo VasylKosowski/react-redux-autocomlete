@@ -2,22 +2,18 @@
  * Created by SG0226637 on 2/9/2017.
  */
 const middleware = store => next => action => {
-    if (!action.then){
+    if (action.type != 'PROMISE') {
         return next(action);
     }
-    const [startAction, successAction, failureAction] = action.actions;
-    store.dispatch({
-        type: startAction
-    });
+        const [successAction, failureAction] = action.actionsList;
 
-    action.promise.then((data) => store.dispatch({
-        type: successAction,
-        data : data,
+        action.promise.then((data) => store.dispatch({
+            type : successAction,
+            data
         }), (error) => store.dispatch({
-        type : failureAction,
-        error : error
+            type: failureAction,
+            error
         }));
-
-};
+    };
 
 export default middleware;

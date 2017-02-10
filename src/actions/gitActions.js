@@ -4,10 +4,10 @@
 
 import {getGitHubUsers} from './../api/gitHubUsersApi';
 
-export function getGitHubUsersAction () {
-    return {
+export function getGitHubUsersAction (data) {
+    return ({
         type: 'PROMISE',
-        actions: ['USERS_LOADING', 'USERS_LOADED', 'USERS_LOADED_FAILURE'],
-        promise: getGitHubUsers('vasyl'),
-    };
+        actionsList: ['USERS_LOADED', 'USERS_LOADED_FAILURE'],
+        promise: getGitHubUsers(data),
+    });
 }
