@@ -7,6 +7,7 @@ import React, {Component} from 'react';
 import { PageHeader } from "react-bootstrap";
 import {getGitHubUsersAction} from '../actions/gitActions';
 import './../stylesheets/main.scss';
+import UserList from './UserList';
 
 class App extends Component {
     constructor(props) {
@@ -25,15 +26,7 @@ class App extends Component {
             <div className="page-user-search">
                 <PageHeader> {'Search gitHub Users'} </PageHeader>
                 <input type="text" value={this.state.query} onChange={this.handleChange} />
-                    <ul>
-                        {this.props.gitUsers.map((user) =>
-                            <li>
-                                <a href={user.html_url}>
-                                 <img src={user.avatar_url} />
-                                 <h3>{user.login}</h3>
-                                </a>
-                            </li>)}
-                    </ul>
+                <UserList gitUsers={this.props.gitUsers}/>
             </div>
         );
     }

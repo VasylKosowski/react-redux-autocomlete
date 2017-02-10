@@ -1,7 +1,7 @@
 .page-user-search {
     ul {
         list-style-type: none;
-        width: 500px;
+        width: 400px;
     }
 
     li a h3 {
@@ -13,6 +13,9 @@
     li a img {
         float: left;
         margin: 0 15px 0 0;
+        height: 50%;
+        border-radius: 50%;
+        width: 50%;
     }
 
     li p {

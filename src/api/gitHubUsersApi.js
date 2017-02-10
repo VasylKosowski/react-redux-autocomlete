@@ -6,5 +6,5 @@ import fetch from 'isomorphic-fetch';
 
 export function getGitHubUsers(query){
    return fetch(`${API_URL}?access_token=${ACCESS_TOKEN}&q=${query}`).then((r) =>
-       r.json());
+       r.json(), (error) => error.json());
 }
