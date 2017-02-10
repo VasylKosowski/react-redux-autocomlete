@@ -11,7 +11,7 @@ import {getGitHubUsersAction} from '../actions/gitActions';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {query: ''};
+        this.state = {query: '', gitUsers : []};
 
         this.handleChange = this.handleChange.bind(this);
     }
@@ -22,19 +22,32 @@ class App extends Component {
     }
 
     render() {
+        // this part will be updated
+        let imageWidth = '100px;';
+        let imageHeight = '100px';
         return (
             <div className="page-user-search">
                 <PageHeader>{'Git User Search'}</PageHeader>
                 <input type="text" value={this.state.query} onChange={this.handleChange} />
-                <ul>
-                    {this.props.gitUsers.map((user) => <li>{user.id} {user.url}</li>)}
-                </ul>
+                <div>
+                    <ul>
+                        {this.props.gitUsers.map((user) =>
+                            <li>
+                                <div>
+                                 <img src={user.avatar_url} style={{width: imageWidth, height:imageHeight }}/>
+                                    <a href={user.url}> {user.login}</a>
+                                </div>
+                            </li>)}
+                    </ul>
+                </div>
             </div>
         );
     }
 }
 
 export default connect(
-    (state) => {return {query : state.query, gitUsers : state.gitUsers};},
+    (state) => {return {
+        query : state.query,
+        gitUsers : state.gitUsers};},
     (dispatch) => bindActionCreators({getGitHubUsersAction}, dispatch)
 )(App)
