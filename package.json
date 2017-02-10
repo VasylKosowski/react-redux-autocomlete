@@ -43,8 +43,12 @@
     "webpack-hot-middleware": "^2.10.0"
   },
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "react": "^0.14.6",
+    "react-bootstrap": "^0.30.7",
     "react-dom": "^0.14.6",
-    "redux": "^3.6.0"
+    "react-redux": "^5.0.2",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.8.1"
   }
 }
