@@ -6,13 +6,12 @@ import {bindActionCreators} from 'redux';
 import React, {Component} from 'react';
 import { PageHeader } from "react-bootstrap";
 import {getGitHubUsersAction} from '../actions/gitActions';
-// import './../stylesheets/main.scss';
+import './../stylesheets/main.scss';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {query: '', gitUsers : []};
-
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -22,24 +21,19 @@ class App extends Component {
     }
 
     render() {
-        // this part will be updated
-        let imageWidth = '100px;';
-        let imageHeight = '100px';
         return (
             <div className="page-user-search">
-                <PageHeader>{'Git User Search'}</PageHeader>
+                <PageHeader> {'Search gitHub Users'} </PageHeader>
                 <input type="text" value={this.state.query} onChange={this.handleChange} />
-                <div>
                     <ul>
                         {this.props.gitUsers.map((user) =>
                             <li>
-                                <div>
-                                 <img src={user.avatar_url} style={{width: imageWidth, height:imageHeight }}/>
-                                    <a href={user.url}> {user.login}</a>
-                                </div>
+                                <a href={user.html_url}>
+                                 <img src={user.avatar_url} />
+                                 <h3>{user.login}</h3>
+                                </a>
                             </li>)}
                     </ul>
-                </div>
             </div>
         );
     }
