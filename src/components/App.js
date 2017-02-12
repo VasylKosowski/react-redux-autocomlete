@@ -17,8 +17,9 @@ class App extends Component {
     }
 
     handleChange(event) {
-        this.setState({query: event.target.value});
-        this.props.getGitHubUsersAction(this.state.query);
+        let inputQuery = event.target.value;
+        this.setState({query: inputQuery});
+        this.props.getGitHubUsersAction(inputQuery);
     }
 
     render() {
@@ -26,7 +27,7 @@ class App extends Component {
             <div className="page-user-search">
                 <PageHeader> {'Search gitHub Users'} </PageHeader>
                 <input type="text" value={this.state.query} onChange={this.handleChange} />
-                <UserList gitUsers={this.props.gitUsers}/>
+                <UserList gitUsers={this.props.gitUsers} />
             </div>
         );
     }
