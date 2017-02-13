@@ -17,7 +17,6 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
-
     handleChange(event) {
         let inputQuery = event.target.value;
         this.setState({query: inputQuery});
@@ -33,6 +32,7 @@ class App extends Component {
                 <UserSearch query={this.state.query} onChange={this.handleChange} />
                 <UserList gitUsers={this.props.gitUsers} />
                 <p>{this.state.failureMessage}</p>
+                <p> Some Footer For Test</p>
             </div>
         );
     }

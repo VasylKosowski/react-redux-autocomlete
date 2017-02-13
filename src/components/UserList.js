@@ -12,8 +12,8 @@ export default class UserList extends React.Component {
         const {gitUsers} = this.props;
         return (
             <ul id="user-list">
-                {gitUsers.map((user, key) =>
-                    <UserListElement key={key} user={user}/>
+                {gitUsers.map((user, i) =>
+                    <UserListElement key={i} index={i} user={user}/>
                 )}
             </ul>
         );

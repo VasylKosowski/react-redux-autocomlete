@@ -8,10 +8,12 @@
         cursor: pointer;
     }
 
-        ul {
+    ul {
         list-style-type: none;
         width: 30%;
         padding: 0;
+        display: block;
+        position: absolute;
     }
 
     li a h3 {

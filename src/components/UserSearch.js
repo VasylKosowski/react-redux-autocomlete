@@ -17,16 +17,13 @@ export default class UserSearch extends React.Component {
             case "ArrowDown":
                 document.getElementById('user-list').childNodes[0].focus();
                 break;
-            case "ArrowUp":
-                console.log('Arrow Up was pressed');
-                break;
         }
     }
     // render
     render() {
         const {query} = this.props;
         return (
-            <input type="text" value={query} onChange={this.props.onChange} onKeyUp={this.handleUp} />
+            <input id="user-search-field" type="text" value={query} onChange={this.props.onChange} onKeyUp={this.handleUp} />
         );
     }
 }
