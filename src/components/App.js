@@ -8,6 +8,7 @@ import { PageHeader } from "react-bootstrap";
 import {getGitHubUsersAction} from '../actions/gitActions';
 import './../stylesheets/main.scss';
 import UserList from './UserList';
+import UserSearch from './UserSearch';
 
 class App extends Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class App extends Component {
         this.state = {query: '', gitUsers : [], failureMessage : ''};
         this.handleChange = this.handleChange.bind(this);
     }
+
 
     handleChange(event) {
         let inputQuery = event.target.value;
@@ -28,7 +30,7 @@ class App extends Component {
         return (
             <div className="page-user-search">
                 <PageHeader> {'Search gitHub Users'} </PageHeader>
-                <input type="text" value={this.state.query} onChange={this.handleChange} />
+                <UserSearch query={this.state.query} onChange={this.handleChange} />
                 <UserList gitUsers={this.props.gitUsers} />
                 <p>{this.state.failureMessage}</p>
             </div>
