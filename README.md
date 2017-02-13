@@ -1,10 +1,10 @@
 # react-redux-autocomlete
 Test Task for React Redux Autocomlete
 
-to run app you need perform :
-# npm install
-# npm start
+To run app you need perform :
+<b> npm install </b> <br/>
+<b> npm start </b> <br/>
 
-then your app will be Listening at http://localhost:3000/
+Then your app will be Listening at http://localhost:3000/
 
-also you need to change your <b>access_token </b> from github settings in constants;
+Also you need to change your <b> ACCESS_TOKEN </b> from gitHub settings in constants -> index.js;

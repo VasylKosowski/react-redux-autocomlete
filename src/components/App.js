@@ -12,7 +12,7 @@ import UserList from './UserList';
 class App extends Component {
     constructor(props) {
         super(props);
-        this.state = {query: '', gitUsers : []};
+        this.state = {query: '', gitUsers : [], failureMessage : ''};
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -20,6 +20,8 @@ class App extends Component {
         let inputQuery = event.target.value;
         this.setState({query: inputQuery});
         this.props.getGitHubUsersAction(inputQuery);
+        this.setState({failureMessage: inputQuery > '' && this.props.gitUsers.length <= 0 ?
+            'Something Happened, please check log in browser.' : ''});
     }
 
     render() {
@@ -28,6 +30,7 @@ class App extends Component {
                 <PageHeader> {'Search gitHub Users'} </PageHeader>
                 <input type="text" value={this.state.query} onChange={this.handleChange} />
                 <UserList gitUsers={this.props.gitUsers} />
+                <p>{this.state.failureMessage}</p>
             </div>
         );
     }
@@ -35,7 +38,7 @@ class App extends Component {
 
 export default connect(
     (state) => {return {
-        query : state.query,
-        gitUsers : state.gitUsers};},
+        gitUsers : state.gitUsers,
+        failureMessage : state.failureMessage};},
     (dispatch) => bindActionCreators({getGitHubUsersAction}, dispatch)
 )(App)

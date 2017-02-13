@@ -10,7 +10,6 @@ let createStoreWithMiddleware = applyMiddleware(
 
 const store = createStoreWithMiddleware(reducer, {
     gitUsers : [],
-    query : ''
 });
 
 export default store;
