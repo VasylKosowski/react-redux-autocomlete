@@ -13,9 +13,17 @@ export default class UserSearch extends React.Component {
     }
 
     handleUp(e) {
+        let firstElem;
+        let list = document.getElementById('user-list');
+            if (list != undefined)
+        firstElem = document.getElementById('user-list').childNodes[0];
+
+        // suggestion
+        // I would like to focus on first elem in a list only by pressing arrow down
         switch(e.key) {
             case "ArrowDown":
-                document.getElementById('user-list').childNodes[0].focus();
+                if (firstElem != undefined)
+                    firstElem.focus();
                 break;
         }
     }

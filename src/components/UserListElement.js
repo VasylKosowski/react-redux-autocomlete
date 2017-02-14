@@ -12,28 +12,35 @@ export default class UserListElement extends React.Component {
     }
 
     handleUp(e) {
-        // this can be improved, but for test task is okay)
-        switch(e.key) {
-            case "ArrowDown":
-                let nextElem = document.getElementById('user-list').childNodes[this.props.index + 1];
-                if (nextElem != undefined)
-                    nextElem.focus();
-                break;
-            case "ArrowUp":
-                if (this.props.index == 0)
-                {
-                    document.getElementById('user-search-field').focus();
-                    return;
-                }
-                let prevElem = document.getElementById('user-list').childNodes[this.props.index - 1];
-                if (prevElem != undefined)
-                    prevElem.focus();
-                break;
-            case "Enter":
-                let currElem = document.getElementById(this.props.index.toString());
-                if (currElem != undefined)
-                    currElem.click();
-                break;
+        let list = document.getElementById('user-list');
+        if (list != undefined){
+            // this can be improved, but for test task is okay)
+            switch(e.key) {
+                case "ArrowDown":
+                    let nextElem = list.childNodes[this.props.index + 1];
+                    if (nextElem != undefined)
+                        nextElem.focus();
+                    break;
+                case "ArrowUp":
+                    if (this.props.index == 0)
+                    {
+                        list.childNodes[this.props.index].focus();
+
+                        // suggestion
+                        // here we can focus either on the first item or on search form;
+                        //document.getElementById('user-search-field').focus();
+                        return;
+                    }
+                    let prevElem = list.childNodes[this.props.index - 1];
+                    if (prevElem != undefined)
+                        prevElem.focus();
+                    break;
+                case "Enter":
+                    let currElem = document.getElementById(this.props.index.toString());
+                    if (currElem != undefined)
+                        currElem.click();
+                    break;
+            }
         }
     }
 
